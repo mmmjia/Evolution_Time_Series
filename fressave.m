@@ -1,0 +1,20 @@
+figure(i)
+tt=i;
+%siteseta=eval(['sitepos',num2str(i)]);%%%
+name0=['sitepos',num2str(tt)];
+siteseta=siteall.(name0);
+dos
+y=ifnall(tt,:);
+y(y<0)=[];
+[f,xi]=ksdensity(y,'Bandwidth',0.03);
+plot(xi,f)
+%ylim([0,1.2])
+xlim([0,3.5])
+s0=xi(find(f==max(f)));
+a0=-(xi(2)-xi(1))*3+s0;
+b=(xi(2)-xi(1))*3+s0;
+pos=site(ifnall(tt,:)>a0 &ifnall(tt,:)<b)
+xlabel('frequency','Fontsize',12)
+ylabel('density','Fontsize',12)
+title(mo,'Fontsize',13)
+saveas(figure(tt),['D://plot/filt/',char(mo),'.jpg'])
