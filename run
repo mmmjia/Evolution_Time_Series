@@ -1,0 +1,6 @@
+for i=8:23
+mo=month(i-7)
+fressave
+f_all(tt-7).f=f;
+x_all(tt-7).x=xi;
+end
