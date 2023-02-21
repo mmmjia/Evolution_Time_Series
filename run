@@ -1,6 +1,9 @@
-for i=8:23
-mo=month(i-7)
+for i=18:23
+tt=i;
 fressave
-f_all(tt-7).f=f;
-x_all(tt-7).x=xi;
+x_all(tt).x = xi;
+f_all(tt).f = f;
+site_fre_all(tt).site=site;
+site_fre_all(tt).fre=ifnall;
+site_fre_all(tt).aa=oder;
 end
