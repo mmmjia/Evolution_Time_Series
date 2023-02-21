@@ -3,6 +3,7 @@ n=size(siteseta,2);
 ifnall=[];
 pos=[];
 site=[];
+oder=[];
 for i=1:n
     siter=oringnal_data(siteseta(i));
     site1=siter(1,1:tt);
@@ -12,13 +13,15 @@ for i=1:n
     ifnall2=[];
     if isempty(fo)==0
         [hs,f,t,imfinsf,imfinse]=hht(fo);
-        ifnall2=[imfinsf,ifnall2];
         imfinsf(:,imfinsf(tt,:)<0)=[];
         [s,ss]=size(imfinsf);
-        [aa,bb]=max(ifnall2(tt,:));
+        [aa,bb]=max(imfinsf(tt,:));
         if ss>1 %&& aa>1.5
-        ifnall2(:,bb)=[];        
+            ss=ss-1;
+            imfinsf(:,bb)=[];        
         end
+        ifnall2=imfinsf;
+        oder=[oder,ones([1,ss])];
         %site=[site,siteseta(i)];
     end
     if site2(tt)>0.3*site1(tt)
@@ -30,16 +33,18 @@ for i=1:n
             [s,ss]=size(imfinsf);
             [aa,bb]=max(imfinsf(tt,:));
             if ss>1% && aa>1.5
+               ss=ss-1;
                imfinsf(:,bb)=[];        
             end
-            ifnall2=[imfinsf,ifnall2];
+            ifnall2=[ifnall2,imfinsf];
+            oder=[oder,2*ones([1,ss])];
             %site=[site,siteseta(i)];
         end
     end
     if site3(tt)>site2(tt)
         if isempty(fo)==0
             [hs,f,t,imfinsf,imfinse]=hht(fo);
-            ifnall2=[imfinsf,ifnall2];
+            ifnall2=[ifnall2,imfinsf];
             %site=[site,siteseta(i)];
         end
     end
